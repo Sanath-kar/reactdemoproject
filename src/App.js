@@ -9,8 +9,16 @@ function App() {
 
   // let { Multiselect } = ReactWidgets;
 
-  const [dropdata,setDropdata] = useState(['0-24', '25-99']);
+  const [dropdata,setDropdata] = useState(['0-24', '25-99','100-249']);
   const [selected,setSelected] = useState([]);
+
+  const handleclick = () => {
+      selected.concat(dropdata);
+      setSelected(dropdata);
+  }
+  const selectall = () => {
+    setSelected(dropdata);
+}
 
   return (
     <div className="container mt-5">
@@ -18,7 +26,7 @@ function App() {
         <div className="col-6 d-inline">
         <ul class="list-inline">
             <li class="list-inline-item">Available: </li>
-            <li class="list-inline-item text-primary"><p onClick={console.log("clicked")}>Select All</p></li>
+            <li class="list-inline-item text-primary"><p onClick={selectall}>Select All</p></li>
         </ul>
         </div>
         <div className="col-6">
@@ -34,6 +42,11 @@ function App() {
           <Multiselect
             data={dropdata}
             defaultValue={['0-24', '25-99']}
+            textField='name'
+            caseSensitive={false}
+            minLength={3}
+            filter='contains'
+            onChange={handleclick}
           />
         </div>
         </div>
@@ -41,6 +54,10 @@ function App() {
         <div class="border border-primary">
         <Multiselect
             data={selected}
+            textField='name'
+            caseSensitive={false}
+            minLength={3}
+            filter='contains'
           />
         </div>
         </div>
