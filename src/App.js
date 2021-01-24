@@ -1,9 +1,9 @@
 import logo from './logo.svg';
-import React, { Fragment,useState } from 'react';
+import React, { useState } from 'react';
 import './App.css';
 import 'react-widgets/dist/css/react-widgets.css';
-// import Multiselect from 'react-widgets/lib/Multiselect';
 import { Multiselect } from 'react-widgets';
+
 
 function App() {
 
@@ -18,10 +18,11 @@ function App() {
   }
   const selectall = () => {
     setSelected(dropdata);
+    console.log("clicked------------------");
 }
 
   return (
-    <div className="container mt-5">
+    <div className="container-fluid mt-5">
       <div className="row">
         <div className="col-6 d-inline">
         <ul class="list-inline">
@@ -49,6 +50,8 @@ function App() {
             onChange={handleclick}
           />
         </div>
+        {/* <div className="col-2">
+        </div> */}
         </div>
         <div className="col-6">
         <div class="border border-primary">
